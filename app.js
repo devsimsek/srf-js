@@ -8,6 +8,7 @@ srf.send.get("/api.json").then(result => {
 srf.load.style("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
 
 srf.route("/", () => {
+  srf.page.set.title("SRF Framework")
   srf.page.style.body("p-2 m-2")
   srf.page.set.loadStatus()
   let nav = new Nav({
@@ -26,6 +27,7 @@ srf.route("/", () => {
   srf.page.append.body(srf.load.template("views/home"))
 })
 srf.route("/docs", () => {
+  srf.page.set.title("SRF Docs")
   srf.page.style.body("p-2 m-2")
   srf.page.set.loadStatus()
   let nav = new Nav({
