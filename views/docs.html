@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h1>{{ title }}</h1>
+  <small>Version: {{ version }}</small>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Author</h5>
+      <div class="d-flex align-items-center">
+        <img src="{{ author.image }}" alt="{{ author.name }}" class="rounded-circle me-3"
+          style="width: 50px; height: 50px;">
+        <div>
+          <h6 class="card-subtitle mb-2">{{ author.name }}</h6>
+          <p class="card-text">{{ author.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <article> {{ contents }} </article>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-4">
+  <div class="container">
+    <span>&copy; 2023 devsimsek. All rights reserved.</span>
+    <ul class="nav">
+      <li><a out="true" href="https://devsimsek.mit-license.org" class="nav-link">License</a></li>
+    </ul>
+  </div>
+</footer>
