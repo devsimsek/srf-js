@@ -12,7 +12,7 @@ srf.route("/", () => {
   srf.page.style.body("p-2 m-2")
   srf.page.set.loadStatus()
   let nav = new Nav({
-    class: "navbar navbar-expand-lg bg-dark navbar-dark rounded-4",
+    class: "navbar navbar-expand-lg bg-dark navbar-dark rounded-4 fixed-top m-4",
     brand: `<div class="d-flex"><img src="/assets/images/logo.png" style="width: 32px"><span class="ms-2">SRF Framework</span></div>`,
     list: {
       type: "ul",
@@ -28,10 +28,10 @@ srf.route("/", () => {
 })
 srf.route("/docs", () => {
   srf.page.set.title("SRF Docs")
-  srf.page.style.body("p-2 m-2")
+  srf.page.style.body("p-2 m-2 mt-5")
   srf.page.set.loadStatus()
   let nav = new Nav({
-    class: "navbar navbar-expand-lg bg-dark navbar-dark rounded-4",
+    class: "navbar navbar-expand-lg bg-dark navbar-dark rounded-4 fixed-top m-4",
     brand: `<div class="d-flex"><img src="/assets/images/logo.png" style="width: 32px"><span class="ms-2">SRF Framework</span></div>`,
     list: {
       type: "ul",
@@ -53,6 +53,7 @@ srf.route("/docs/{all}", async (doc) => {
       alert("Can't reach api." + e)
     })
   }
+  srf.page.set.title("SRF Docs")
   srf.page.style.body("p-2 m-2")
   srf.page.set.loadStatus()
   let nav = new Nav({
@@ -71,6 +72,7 @@ srf.route("/docs/{all}", async (doc) => {
   doc = srf_api.docs.filter(d => d.document === doc[0])
   let body = ""
   if (doc[0] !== undefined) {
+    srf.page.set.title("SRF Docs - " + doc[0].name)
     body = srf.load.template("views/docs", {
       "title": doc[0].name,
       "contents": doc[0].contents,
