@@ -1,6 +1,6 @@
 const srf = new SRF();
 let srf_api = {}
-srf.send.get("http://localhost:8080/api.json").then(result => {
+srf.send.get("/api.json").then(result => {
   srf_api = JSON.parse(result.responseText)
 }).catch(e => {
   alert("Can't reach api." + e)
@@ -45,7 +45,7 @@ srf.route("/docs", () => {
 })
 srf.route("/docs/{all}", async (doc) => {
   if (srf_api.docs === undefined) {
-    await srf.send.get("http://localhost:8080/api.json").then(result => {
+    await srf.send.get("/api.json").then(result => {
       srf_api = JSON.parse(result.responseText)
     }).catch(e => {
       alert("Can't reach api." + e)
