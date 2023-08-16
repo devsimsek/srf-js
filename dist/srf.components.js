@@ -11,7 +11,11 @@ class Component {
     return "srf-" + Math.random().toString(36).substring(2, 10);
   }
 
-  present() { }
+  render(options = null) {
+  }
+
+  present() {
+  }
 }
 
 class Card extends Component {
@@ -45,7 +49,13 @@ class Card extends Component {
   constructor(body, options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       let b = `<div class="card ${options.class}">`;
       if (options.title.content !== "" && options.title.custom === undefined) {
         b += `<${options.title.type} style="${options.title.style}">${options.title.content}</${options.title.type}>`;
@@ -114,7 +124,13 @@ class Accordion extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       let parentId = Component.generateID("accordion");
       this.html = `<div class="accordion${(options.class !== "" ? " " + options.class : "")}" id="${parentId}">`;
       if (options.items !== null && options.items.length > 0) {
@@ -157,12 +173,15 @@ class Toast extends Component {
 
   constructor(title, body, options = null) {
     super();
-    if (options === null) {
-      options = this.options;
+    if (options !== null) {
+      this.options = {...this.options, ...options};
     }
-    options = { ...this.options, ...options };
+    this.render(this.options)
+  }
+
+  render(options = null) {
     this.html = `<div class="toast-container position-fixed ${options.alignment} p-3 ${options.type !== "" ? " bg-" + options.type : ""}"><div id="${options.id}" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="${options.autohide
-      }" data-bs-delay="${options.delay}"><div class="toast-header">${options.image.src !== "" ? `<img src="${options.image.src}" class="rounded me-2">` : ""}<strong class="me-auto">${title}</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="${options.close}"></button></div><div class="toast-body">${body}</div></div></div>`;
+    }" data-bs-delay="${options.delay}"><div class="toast-header">${options.image.src !== "" ? `<img src="${options.image.src}" class="rounded me-2">` : ""}<strong class="me-auto">${title}</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="${options.close}"></button></div><div class="toast-body">${body}</div></div></div>`;
   }
 
   present() {
@@ -193,7 +212,13 @@ class Alert extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       let dismissibleClass = options.dismissible ? "alert-dismissible" : "";
       this.html = `<div id="${options.id}" class="alert alert-${options.type} ${dismissibleClass} ${options.class}" role="alert">${options.content}`;
       if (options.dismissible) {
@@ -229,11 +254,17 @@ class Form extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<form id="${options.id}" class="${options.class}" method="${options.method}" action="${options.action}">${options.content}`;
       if (options.inputs !== null && options.inputs.length > 0) {
         options.inputs.forEach((input) => {
-          let { type, label, name, value, required } = input;
+          let {type, label, name, value, required} = input;
           this.html += `<div class="mb-3"><label class="form-label">${label}</label><input type="${type}" name="${name}" value="${value}" ${required ? 'required' : ''}></div>`;
         });
       }
@@ -268,7 +299,13 @@ class Flash extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<div id="${options.id}" class="alert alert-${options.type} ${options.class}" role="alert">${options.content}</div>`;
     } else {
       this.html = `<div class="alert alert-success">Empty Flash Message</div>`;
@@ -297,7 +334,13 @@ class Badge extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<span id="${options.id}" class="badge bg-${options.type} ${options.class}">${options.content}</span>`;
     } else {
       this.html = `<span class="badge bg-primary">Empty Badge</span>`;
@@ -327,7 +370,13 @@ class Button extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<button id="${options.id}" class="btn ${options.class}" type="${options.type}">${options.content}</button>`;
       if (options.onClick !== null) {
         document.addEventListener("click", (event) => {
@@ -363,7 +412,13 @@ class Carousel extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<div id="${options.id}" class="carousel slide ${options.class}" data-bs-ride="carousel" data-bs-interval="${options.interval}"><div class="carousel-inner">`;
       if (options.items !== null && options.items.length > 0) {
         options.items.forEach((item, index) => {
@@ -401,7 +456,13 @@ class List extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<${options.type} id="${options.id}" class="${options.class}">`;
       if (options.items !== null && options.items.length > 0) {
         options.items.forEach((item) => {
@@ -437,7 +498,13 @@ class Toolbar extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<div id="${options.id}" class="${options.class}">`;
       if (options.items !== null && options.items.length > 0) {
         options.items.forEach((item) => {
@@ -476,7 +543,13 @@ class Modal extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<div id="${options.id}" class="modal ${options.class}" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">${options.title}</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body">${options.body}</div>`;
       if (options.footer !== "") {
         this.html += `<div class="modal-footer">
@@ -532,8 +605,13 @@ class Nav extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
 
+  render(options = null) {
+    if (options !== null) {
       this.html = `<${options.type} class="navbar${(options.class !== "" ? ` ${options.class}` : "")}" id="${options.id}">
       <div class="container-fluid">
         ${(options.brand !== "") ? `<a class="navbar-brand" href="/">${options.brand}</a>` : ""}
@@ -556,6 +634,13 @@ class Nav extends Component {
     } else {
       this.html = `<nav class="nav">Empty Nav</nav>`;
     }
+  }
+
+  setActive(label, status = true) {
+    this.options.items = this.options.items.map(item =>
+      item.label === label ? {...item, active: status} : item
+    );
+    this.render(this.options)
   }
 
   present() {
@@ -581,7 +666,13 @@ class Progress extends Component {
   constructor(options = null) {
     super();
     if (options !== null) {
-      options = { ...this.options, ...options };
+      this.options = {...this.options, ...options};
+    }
+    this.render(this.options)
+  }
+
+  render(options = null) {
+    if (options !== null) {
       this.html = `<div id="${options.id}" class="progress ${options.class}"><div class="progress-bar bg-${options.type}" role="progressbar" style="width: ${options.value}%;" aria-valuenow="${options.value}" aria-valuemin="0" aria-valuemax="${options.max}"></div></div>`;
     } else {
       this.html = `<div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>`;

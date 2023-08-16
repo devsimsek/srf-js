@@ -1,13 +1,3 @@
-// Route Model
-class Route {
-  path;
-  handler;
-  constructor(path, handler) {
-    this.path = path
-    this.handler = handler
-  }
-}
-
 class SRF {
   constructor() {
     console.info("SRF.JS: This site uses SRF framework to implement most useful features without coding anything. Try now! (https://github.com/devsimsek/srf-js)")
@@ -38,16 +28,28 @@ class SRF {
 
   page = {
     style: {
-      body(classList) { if (document.querySelector("body") !== null) document.querySelector("body").classList = classList }
+      body(classList) {
+        if (document.querySelector("body") !== null) document.querySelector("body").classList = classList
+      }
     },
     set: {
-      body(body) { document.querySelector("#srf-app").innerHTML = body },
-      title(title) { document.querySelector("title").innerText = title },
-      append(component) { document.querySelector("#srf-app").innerHTML += component },
-      loadStatus() { if (document.querySelector("#srf-loader") !== null) document.querySelector("#srf-loader").style = "display: none" }
+      body(body) {
+        document.querySelector("#srf-app").innerHTML = body
+      },
+      title(title) {
+        document.querySelector("title").innerText = title
+      },
+      append(component) {
+        document.querySelector("#srf-app").innerHTML += component
+      },
+      loadStatus() {
+        if (document.querySelector("#srf-loader") !== null) document.querySelector("#srf-loader").style = "display: none"
+      }
     },
     append: {
-      body(body) { document.querySelector("#srf-app").innerHTML += body }
+      body(body) {
+        document.querySelector("#srf-app").innerHTML += body
+      }
     },
     get: {
       query(name, url = window.location.href) {
@@ -141,10 +143,10 @@ class SRF {
   }
 
   resolveRoute(activated_route) {
-    let mr = { "handler": this.routes["404"], "params": activated_route }
+    let mr = {"handler": this.routes["404"], "params": activated_route}
     Object.keys(this.routes).forEach(route => {
       if (activated_route === route) {
-        mr = { "handler": this.routes[activated_route], "params": null }
+        mr = {"handler": this.routes[activated_route], "params": null}
       } else {
         let r_route = route.replace('{url}', '([0-9a-zA-Z]+)')
         r_route = r_route.replace('{id}', '([0-9]+)')
@@ -153,7 +155,7 @@ class SRF {
         let m = activated_route.match(rg);
         if (m && m[0] !== "/") {
           m.shift()
-          mr = { "handler": this.routes[route], "params": m }
+          mr = {"handler": this.routes[route], "params": m}
         }
       }
     })

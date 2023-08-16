@@ -41,6 +41,47 @@
           "core": "https://srf.smsk.me/dist/srf.core.js",
           "components": "https://srf.smsk.me/dist/srf.components.js"
         }
+      },
+      "1.0.1": {
+        "published": true,
+        "date": "16 June Fri",
+        "docs": "https://srf.smsk.me",
+        "developer": "devsimsek",
+        "commit_message": "Some fixes, optimizations and implementation of the render() function",
+        "repository": "https://github.com/devsimsek/srf",
+        "version_code": "v1.0.1 - Early Development",
+        "features": {
+          "components": [
+            "Component",
+            "Card",
+            "Accordion",
+            "Toast",
+            "Alert",
+            "Form",
+            "Flash",
+            "Badge",
+            "Button",
+            "Carousel",
+            "List",
+            "Toolbar",
+            "Modal",
+            "Nav",
+            "Progress"
+          ],
+          "core": [
+            "Route",
+            "Page Manipulation",
+            "Template Parsing",
+            "Accessing Query Parameters",
+            "Integrating HTTP API's",
+            "Async Loading Scripts and Styles"
+          ]
+        },
+        "cdn": {
+          "bundle": "https://srf.smsk.me/dist/srf.js",
+          "core": "https://srf.smsk.me/dist/srf.core.js",
+          "components": "https://srf.smsk.me/dist/srf.components.js"
+        }
       }
     }
   ],
