@@ -32,12 +32,12 @@ For detailed documentation and examples, please refer to the [SRF Framework Home
 ## CDN Links
 
 - Latest version
-  - bundle: https://srf.smsk.me/dist/srf.js
-    - code: ```html <script src="https://srf.smsk.me/dist/srf.js"></script>```
-  - core: https://srf.smsk.me/dist/srf.core.js
-    - code: ```html <script src="https://srf.smsk.me/dist/srf.core.js"></script>```
-  - components: https://srf.smsk.me/dist/srf.components.js
-    - code: ```html <script src="https://srf.smsk.me/dist/srf.components.js"></script>```
+  - bundle: https://cdn.jsdelivr.net/gh/devsimsek/srf-js@main/dist/srf.js
+    - code: ```html <script src="https://cdn.jsdelivr.net/gh/devsimsek/srf-js@main/dist/srf.js"></script>```
+  - core: https://cdn.jsdelivr.net/gh/devsimsek/srf-js@main/dist/srf.core.js
+    - code: ```html <script src="https://cdn.jsdelivr.net/gh/devsimsek/srf-js@main/dist/srf.core.js"></script>```
+  - components: https://cdn.jsdelivr.net/gh/devsimsek/srf-js@main/dist/srf.components.js
+    - code: ```html <script src="https://cdn.jsdelivr.net/gh/devsimsek/srf-js@main/dist/srf.components.js"></script>```
 
 ## Contributors
 
