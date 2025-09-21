@@ -1,6 +1,6 @@
 const srf = new SRF();
 let srf_api = {}
-srf.send.get("/srf-js/api.json").then(result => {
+srf.send.get("/api.json").then(result => {
   srf_api = JSON.parse(result.responseText)
 }).catch(e => {
   alert("Can't reach api." + e)
